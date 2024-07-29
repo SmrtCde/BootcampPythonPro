@@ -1,4 +1,4 @@
-age = input()
+age = input("Enter you age: ")
 years = 90 - int(age)
 months = round(years * 12)
 weeks = round(years * 52)
