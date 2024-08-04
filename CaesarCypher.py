@@ -1,50 +1,70 @@
-import random
+  import random
 
-import CaesarCyphers
+  import CaesarCyphers
 
-def encrypt():
+  # def encrypt():
 
-  num = int(input("Please pick a number between 1 - 10: "))
+  num = int(input("Please pick a number between 1 - 9: "))
   txt = input("Submit your text for encryption: ")
 
-  nlist = []
   shiftFactor = 0
-  for n in range(1,num):
+
+  nlist = []
+  true = []
+  cypherPos = []
+  encryptA = []
+  encryptB = []
+  encryptC = []
+  encryptS = []
+  aList = []
+  bList = []
+  cList = []
+  encryptOutput = ""
+  b = ""
+  e = ""
+
+  for n in range(1, num):
     nlist.append(n)
     shiftFactor = random.choice(nlist)
 
-  cypher_pos = []
-  encrypt_S = []
-  encrypt_Output = ""
-
   for letter in txt:
     pos = CaesarCyphers.primaryList.index(letter)
-    cypher_pos.append(pos + shiftFactor)
+    true.append(pos)
+    s = pos * int(shiftFactor)
+    aList.append(s)
+    encryptA = [CaesarCyphers.primaryList[x] for x in aList]
 
-  for n in cypher_pos:
-    if len(str(n)) == 1:
-      encrypt_S.append("0"+str(n))
-    else:
-      encrypt_S.extend([str(a) for a in str(n)])
+  for a in encryptA:
+    pos = CaesarCyphers.sList.index(a)
+    bList.append(pos)
+    encryptB = [CaesarCyphers.tList[x] for x in bList]
 
-  b = ""
-  e = ""
+  for b in encryptB:
+    pos = CaesarCyphers.qList.index(b)
+    cList.append(pos)
+    encryptC = [CaesarCyphers.primaryList[x] for x in cList]
+
   if len(str(shiftFactor)) == 1:
     b = "0"
     e = str(shiftFactor)[:1]
   else:
     b = str(shiftFactor)[:1]
-    e = str(shiftFactor)[len(str(shiftFactor))-1:len(str(shiftFactor))]
+    e = str(shiftFactor)[len(str(shiftFactor)) - 1:len(str(shiftFactor))]
 
+  encryptOutput += b
+  for x in encryptC:
+    encryptOutput += str(x)
+  encryptOutput += e
 
-  for x in encrypt_S:
-    encrypt_Output += b
-    encrypt_Output += str(x)
-    encrypt_Output += e
-
-  print(shiftFactor)
-  print(b)
-  print(e)
-  print(cypher_pos)
-  print(encrypt_S)
-  print(encrypt_Output)
+  print(f"\nText: {txt}")
+  print(f"\nshiftFactor: {shiftFactor}")
+  print(f"\nb value {b}")
+  print(f"\ne value {e}")
+  print(f"\ntrue: {true}")
+  print(f"\naList: {aList}")
+  print(f"\nencryptA: {encryptA}")
+  print(f"\nbList: {bList}")
+  print(f"\nencryptB: {encryptB}")
+  print(f"\ncList: {cList}")
+  print(f"\nencryptC: {encryptC}")
+  print(f"\nencryptOutput: {encryptOutput}")
