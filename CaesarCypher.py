@@ -1,14 +1,14 @@
-  import random
+import random
 
-  import CaesarCyphers
+import CaesarCyphers
 
-def encrypt():
+def encrypt(txt):
 
-  num = int(input("Please pick a number between 1 - 9: "))
-  txt = input("Submit your text for encryption: ")
+  # num = int(input("Please pick a number between 1 - 9: "))
+  # txt = input("Submit your text for encryption: ")
   
-  shiftFactor = 0
-  
+  shiftFactor = 4
+  txt = str(txt)
   nlist = []
   true = []
   cypherPos = []
@@ -23,14 +23,14 @@ def encrypt():
   b = ""
   e = ""
   
-  for n in range(1, num):
-    nlist.append(n)
-    shiftFactor = random.choice(nlist)
+  # for n in range(1, num):
+  #   nlist.append(n)
+  #   shiftFactor = random.choice(nlist)
   
   for letter in txt:
     pos = CaesarCyphers.primaryList.index(letter)
     true.append(pos)
-    s = pos * int(shiftFactor)
+    s = pos + int(shiftFactor)
     aList.append(s)
     encryptA = [CaesarCyphers.primaryList[x] for x in aList]
   
@@ -44,17 +44,17 @@ def encrypt():
     cList.append(pos)
     encryptC = [CaesarCyphers.primaryList[x] for x in cList]
   
-  if len(str(shiftFactor)) == 1:
-    b = "0"
-    e = str(shiftFactor)[:1]
-  else:
-    b = str(shiftFactor)[:1]
-    e = str(shiftFactor)[len(str(shiftFactor)) - 1:len(str(shiftFactor))]
+  # if len(str(shiftFactor)) == 1:
+  #   b = "0"
+  #   e = str(shiftFactor)[:1]
+  # else:
+  #   b = str(shiftFactor)[:1]
+  #   e = str(shiftFactor)[len(str(shiftFactor)) - 1:len(str(shiftFactor))]
   
-  encrypt += b
+  # encrypt += b
   for x in encryptC:
     encrypt += str(x)
-  encrypt += e
+  # encrypt += e
   
   # print(f"\nText: {txt}")
   # print(f"\nshiftFactor: {shiftFactor}")
@@ -67,4 +67,4 @@ def encrypt():
   # print(f"\nencryptB: {encryptB}")
   # print(f"\ncList: {cList}")
   # print(f"\nencryptC: {encryptC}")
-  print(f"\nencryptOutput: {encrypt}")
+  return print(f"\nencrypt: {encrypt}")

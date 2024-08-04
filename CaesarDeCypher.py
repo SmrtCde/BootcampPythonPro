@@ -3,8 +3,8 @@ import CaesarCyphers
 # inp = inp("Enter submission: ")
 # inp = "0h.ii.qrF 8.-}O2"
 
-def decrypt():
-  inp
+def decrypt(a):
+  # inp = a
   true = []
   code = []
   cList = []
@@ -14,16 +14,15 @@ def decrypt():
   aList = []
   encryptA = []
   decode = []
-  encrypt = ""
-  shiftFactor = ""
-  message = ""
-  decrypt = 0
+  encrypt = str(a)
+  shiftFactor = 4
+  decrypt = ""
 
-  shiftFactor += inp[:1]
-  shiftFactor += inp[len(inp)-1:len(inp)]
-  shiftFactor = int(shiftFactor)
+  # shiftFactor += inp[:1]
+  # shiftFactor += inp[len(inp)-1:len(inp)]
+  # shiftFactor = int(shiftFactor)
 
-  encrypt = inp[1:len(inp)-1]
+  # encrypt = inp[1:len(inp)-1]
 
   for num in encrypt:
     code.append(num)
@@ -41,20 +40,22 @@ def decrypt():
   for b in encryptB:
     x = CaesarCyphers.primaryList.index(b)
     aList.append(x)
-    s = round(x / shiftFactor)
+    s = round(x - shiftFactor)
     true.append(s)
     decode = [CaesarCyphers.primaryList[t] for t in true]
 
-  message = ("".join(decode))
+  decrypt = ("".join(decode))
 
+  return (
   # print(f"\ninp: {inp}")
   # print(f"\ncode: {code}")
-  # print(f"\ncList: {cList}")
-  # print(f"\nencryptC: {encryptC}")
-  # print(f"\nbList: {bList}")
-  # print(f"\nencryptB: {encryptB}")
-  # print(f"\naList: {aList}")
-  # print(f"\nencryptA: {encryptA}")
-  # print(f"\ntrue: {true}")
-  # print(f"\ndecode: {decode}")
-  print(f"\nmessage: {message}")
+  # ,print(f"\ncList: {cList}")
+  # ,print(f"\nencryptC: {encryptC}")
+  # ,print(f"\nbList: {bList}")
+  # ,print(f"\nencryptB: {encryptB}")
+  # ,print(f"\naList: {aList}")
+  # ,print(f"\nencryptA: {encryptA}")
+  # ,print(f"\ntrue: {true}")
+  # ,print(f"\ndecode: {decode}")
+  print(f"\ndecrypt: {decrypt}")
+  )
