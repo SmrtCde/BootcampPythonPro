@@ -1,42 +1,60 @@
 import CaesarCyphers
 
-import CaesarCypher
+# inp = inp("Enter submission: ")
+# inp = "0h.ii.qrF 8.-}O2"
 
-CaesarCypher.encrypt()
+def decrypt():
+  inp
+  true = []
+  code = []
+  cList = []
+  encryptC = []
+  bList = []
+  encryptB = []
+  aList = []
+  encryptA = []
+  decode = []
+  encrypt = ""
+  shiftFactor = ""
+  message = ""
+  decrypt = 0
 
-input = "01205201201202201202201201201201207201206200220082003201201201204200720062"
-## mission failed
-## 02
-##[15, 11, 21, 21, 11, 17, 16, 2, 8, 3, 11, 14, 7, 6]
-##['1', '5', '1', '1', '2', '1', '2', '1', '1', '1', '1', '7', '1', '6', '02', '08', '03', '1', '1', '1', '4', '07', '06']
-## 120520120120220120220120120120120720120620022008200320120120120420072006
+  shiftFactor += inp[:1]
+  shiftFactor += inp[len(inp)-1:len(inp)]
+  shiftFactor = int(shiftFactor)
 
-code = []
-pos = []
-letter = ""
-decrypt = 0
-decode = ""
+  encrypt = inp[1:len(inp)-1]
 
-shiftFactor = ""
-shiftFactor += input[:1]
-shiftFactor += input[1:2]
-shiftFactor = int(shiftFactor)
+  for num in encrypt:
+    code.append(num)
 
-input = input[1:len(input)-1]
+  for c in code:
+    x = CaesarCyphers.primaryList.index(c)
+    cList.append(x)
+    encryptC.append(CaesarCyphers.qList[x])
 
-n = 2
-code = [int(input[i:i+n]) for i in range(0, len(input), n)]
+  for c in encryptC:
+    x = CaesarCyphers.tList.index(c)
+    bList.append(x)
+    encryptB.append(CaesarCyphers.sList[x])
 
-for num in code:
-  num = int(num - shiftFactor)
-  # decrypt = int([str(x) for x in num])
-  # pos = CaesarCyphers.primaryList.index(decrypt)
-  letter = str(CaesarCyphers.primaryList[num])
-  decode += letter
+  for b in encryptB:
+    x = CaesarCyphers.primaryList.index(b)
+    aList.append(x)
+    s = round(x / shiftFactor)
+    true.append(s)
+    decode = [CaesarCyphers.primaryList[t] for t in true]
 
+  message = ("".join(decode))
 
-print(code)
-print(CaesarCyphers.primaryList)
-print(pos)
-print(letter)
-print(decode)
+  # print(f"\ninp: {inp}")
+  # print(f"\ncode: {code}")
+  # print(f"\ncList: {cList}")
+  # print(f"\nencryptC: {encryptC}")
+  # print(f"\nbList: {bList}")
+  # print(f"\nencryptB: {encryptB}")
+  # print(f"\naList: {aList}")
+  # print(f"\nencryptA: {encryptA}")
+  # print(f"\ntrue: {true}")
+  # print(f"\ndecode: {decode}")
+  print(f"\nmessage: {message}")
