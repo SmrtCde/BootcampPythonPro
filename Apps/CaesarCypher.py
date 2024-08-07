@@ -1,6 +1,4 @@
-import random
-
-import CaesarCyphers
+import Apps.CaesarCyphers
 
 def encrypt(txt):
 
@@ -28,21 +26,21 @@ def encrypt(txt):
   #   shiftFactor = random.choice(nlist)
   
   for letter in txt:
-    pos = CaesarCyphers.primaryList.index(letter)
+    pos  = Apps.CaesarCyphers.primaryList.index(letter)
     true.append(pos)
     s = pos + int(shiftFactor)
     aList.append(s)
-    encryptA = [CaesarCyphers.primaryList[x] for x in aList]
+    encryptA = [Apps.CaesarCyphers.primaryList[x] for x in aList]
   
   for a in encryptA:
-    pos = CaesarCyphers.sList.index(a)
+    pos  = Apps.CaesarCyphers.sList.index(a)
     bList.append(pos)
-    encryptB = [CaesarCyphers.tList[x] for x in bList]
+    encryptB = [Apps.CaesarCyphers.tList[x] for x in bList]
   
   for b in encryptB:
-    pos = CaesarCyphers.qList.index(b)
+    pos  = Apps.CaesarCyphers.qList.index(b)
     cList.append(pos)
-    encryptC = [CaesarCyphers.primaryList[x] for x in cList]
+    encryptC = [Apps.CaesarCyphers.primaryList[x] for x in cList]
   
   # if len(str(shiftFactor)) == 1:
   #   b = "0"
@@ -67,4 +65,5 @@ def encrypt(txt):
   # print(f"\nencryptB: {encryptB}")
   # print(f"\ncList: {cList}")
   # print(f"\nencryptC: {encryptC}")
-  return print(f"\nencrypt: {encrypt}")
+  
+  return print(f"Your encrypted text is:\n\n {encrypt}")
